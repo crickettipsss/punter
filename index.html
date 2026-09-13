@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PUNTER KA TOSS</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 18px;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #fff;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(0, 140, 255, .22), transparent 35%),
+        radial-gradient(circle at 80% 80%, rgba(0, 70, 255, .20), transparent 35%),
+        #020611;
+      overflow-x: hidden;
+    }
+
+    /* Lighting background */
+    body::before {
+      content: "";
+      position: fixed;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: rgba(0, 140, 255, .18);
+      filter: blur(80px);
+      top: -100px;
+      left: -100px;
+      animation: lightMove 6s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: rgba(0, 80, 255, .16);
+      filter: blur(85px);
+      bottom: -100px;
+      right: -100px;
+      animation: lightMove2 7s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+
+    @keyframes lightMove {
+      from { transform: translate(0, 0); }
+      to   { transform: translate(80px, 70px); }
+    }
+
+    @keyframes lightMove2 {
+      from { transform: translate(0, 0); }
+      to   { transform: translate(-70px, -60px); }
+    }
+
+    .card {
+      position: relative;
+      width: 100%;
+      max-width: 365px;
+      padding: 25px 20px 20px;
+      text-align: center;
+      border-radius: 22px;
+      background: rgba(4, 10, 24, .92);
+      border: 1px solid rgba(0, 170, 255, .8);
+      box-shadow:
+        0 0 12px rgba(0, 150, 255, .65),
+        0 0 35px rgba(0, 100, 255, .25),
+        inset 0 0 25px rgba(0, 100, 255, .08);
+      overflow: hidden;
+      z-index: 2;
+    }
+
+    /* Four-side moving light border */
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      border-radius: 23px;
+      padding: 2px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        #00b7ff,
+        transparent,
+        #1677ff,
+        transparent
+      );
+      background-size: 300% 100%;
+      animation: borderGlow 4s linear infinite;
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    @keyframes borderGlow {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .logo {
+      width: 82px;
+      height: 82px;
+      object-fit: cover;
+      border-radius: 50%;
+      display: block;
+      margin: 0 auto 12px;
+      border: 2px solid rgba(0, 190, 255, .9);
+      box-shadow:
+        0 0 12px rgba(0, 190, 255, .9),
+        0 0 28px rgba(0, 120, 255, .35);
+      animation: floatLogo 2.8s ease-in-out infinite;
+    }
+
+    @keyframes floatLogo {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-7px);
+      }
+    }
+
+    h1 {
+      font-size: 27px;
+      font-weight: 900;
+      letter-spacing: .7px;
+      margin-bottom: 8px;
+      text-shadow:
+        0 0 8px rgba(0, 180, 255, .9),
+        0 0 18px rgba(0, 100, 255, .55);
+    }
+
+    .tagline {
+      font-size: 13px;
+      line-height: 1.5;
+      color: #d9ecff;
+      margin-bottom: 17px;
+    }
+
+    .countdown-box {
+      padding: 9px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(0, 170, 255, .55);
+      background: rgba(0, 100, 180, .08);
+      margin-bottom: 16px;
+    }
+
+    .countdown-title {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .5px;
+      margin-bottom: 3px;
+    }
+
+    #countdown {
+      font-size: 24px;
+      font-weight: 900;
+      color: #fff;
+      text-shadow: 0 0 12px rgba(0, 190, 255, .9);
+    }
+
+    .join-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 9px;
+      width: 100%;
+      min-height: 52px;
+      padding: 13px 18px;
+      border-radius: 14px;
+      text-decoration: none;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: .3px;
+      background: linear-gradient(135deg, #008cff, #0057d9);
+      border: 1px solid rgba(255,255,255,.28);
+      box-shadow:
+        0 0 12px rgba(0, 140, 255, .65),
+        0 8px 25px rgba(0, 80, 220, .28);
+      animation: buttonFloat 2.4s ease-in-out infinite;
+      transition: transform .2s ease;
+    }
+
+    .join-btn:hover {
+      transform: scale(1.025);
+    }
+
+    @keyframes buttonFloat {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-5px);
+      }
+    }
+
+    .telegram-icon {
+      width: 21px;
+      height: 21px;
+      fill: currentColor;
+    }
+
+    .disclaimer {
+      margin-top: 15px;
+      font-size: 9.5px;
+      line-height: 1.45;
+      color: #aebed0;
+      opacity: .9;
+    }
+
+    .ads {
+      margin-top: 14px;
+      padding-top: 11px;
+      border-top: 1px solid rgba(120,180,255,.18);
+      font-size: 10px;
+      color: #9bb8d2;
+    }
+
+    .ads a {
+      color: #52bdff;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    @media (max-width: 380px) {
+      .card {
+        max-width: 345px;
+        padding: 22px 17px 18px;
+      }
+
+      .logo {
+        width: 76px;
+        height: 76px;
+      }
+
+      h1 {
+        font-size: 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="card">
+
+    <img src="logo.jpg" alt="PUNTER KA TOSS Logo" class="logo">
+
+    <h1>PUNTER KA TOSS</h1>
+
+    <p class="tagline">
+      Accurate analysis • Match Update · Right Pred!ction
+    </p>
+
+    <div class="countdown-box">
+      <div class="countdown-title">FREE JOINING ENDS IN</div>
+      <div id="countdown">30s</div>
+    </div>
+
+    <a
+      class="join-btn"
+      href="https://t.me/+FdLW8acJK5M0Njc1"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <svg class="telegram-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M21.5 3.5 18.2 20c-.25 1.17-.9 1.46-1.82.91l-5-3.68-2.41 2.32c-.27.27-.5.5-1.02.5l.36-5.1 9.28-8.38c.4-.36-.09-.56-.62-.2L5.5 13.2.57 11.66c-1.07-.34-1.09-1.07.22-1.58L20.05 4.2c.9-.33 1.69.2 1.45-.7Z"/>
+      </svg>
+      JOIN TELEGRAM NOW
+    </a>
+
+    <p class="disclaimer">
+      Disclaimer: This channel shares cricket updates, analysis, and general
+      information for fans. It does not promote betting or gambling. No outcomes
+      are guaranteed. Please verify independently and act responsibly
+    </p>
+
+    <div class="ads">
+      Ads By
+      <a href="https://t.me/+4I3Ss-TD1hI5NGE1"
+         target="_blank"
+         rel="noopener noreferrer">
+        @PrinceAds9xz
+      </a>
+    </div>
+
+  </main>
+
+  <script>
+    // Only visual countdown — no tracking or analytics.
+    let seconds = 30;
+
+    function updateCountdown() {
+      document.getElementById("countdown").textContent = seconds + "s";
+      seconds--;
+
+      if (seconds < 0) {
+        seconds = 30;
+      }
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+
+</body>
+</html>
