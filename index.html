@@ -1,0 +1,218 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050b09">
+<title>PUNTER | Join Telegram</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background-color: #050b09;
+  background-image:
+    linear-gradient(rgba(0,255,190,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,190,.035) 1px, transparent 1px);
+  background-size: 90px 90px;
+  color: #f5f8f7;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 520px;
+  min-height: 100vh;
+  padding: 50px 24px 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo {
+  width: 230px;
+  height: 230px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #00e9ae;
+  box-shadow: 0 0 25px rgba(0,233,174,.13);
+  animation: float 3s ease-in-out infinite;
+  margin: 5px 0 35px;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
+}
+
+.badge {
+  background: rgba(0,233,174,.09);
+  border: 1px solid rgba(0,233,174,.18);
+  color: #00e9ae;
+  border-radius: 40px;
+  padding: 13px 23px;
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 26px;
+}
+
+.dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  background: #00e9ae;
+  border-radius: 50%;
+  margin-right: 9px;
+}
+
+h1 {
+  font-size: clamp(46px, 12vw, 68px);
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin-bottom: 18px;
+}
+
+.subtitle {
+  color: #9daaa5;
+  font-size: 17px;
+  line-height: 1.7;
+  margin-bottom: 35px;
+}
+
+.join-btn {
+  width: 100%;
+  min-height: 82px;
+  border-radius: 12px;
+  background: #00dba6;
+  color: #03130e;
+  text-decoration: none;
+  font-size: 19px;
+  font-weight: 800;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  box-shadow: 0 0 22px rgba(0,233,174,.12);
+  animation: glow 2s ease-in-out infinite;
+  transition: transform .2s;
+}
+
+.join-btn:active {
+  transform: scale(.97);
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 12px rgba(0,233,174,.12); }
+  50% { box-shadow: 0 0 24px rgba(0,233,174,.3); }
+}
+
+.telegram-icon {
+  width: 25px;
+  height: 25px;
+  fill: currentColor;
+}
+
+.private {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  color: #91a49c;
+  font-size: 13px;
+  margin: 42px 0 22px;
+  letter-spacing: .5px;
+}
+
+.line {
+  width: 45px;
+  height: 1px;
+  background: #194338;
+}
+
+.disclaimer {
+  color: #788780;
+  font-size: 11px;
+  line-height: 1.6;
+  max-width: 420px;
+  margin-top: auto;
+  padding-top: 12px;
+}
+
+@media (max-width: 380px) {
+  .container {
+    padding: 35px 18px 20px;
+  }
+
+  .logo {
+    width: 190px;
+    height: 190px;
+    margin-bottom: 28px;
+  }
+
+  .join-btn {
+    min-height: 70px;
+    font-size: 16px;
+  }
+
+  .subtitle {
+    font-size: 15px;
+  }
+}
+</style>
+</head>
+
+<body>
+<main class="container">
+
+  <img class="logo" src="logo.jpg" alt="PUNTER Logo">
+
+  <div class="badge">
+    <span class="dot"></span>
+    100% FREE ENTRY
+  </div>
+
+  <h1>PUNTER</h1>
+
+  <p class="subtitle">
+    Live tips, tricks and insights — shared daily inside
+    our Telegram channel.
+  </p>
+
+  <a class="join-btn"
+     href="https://t.me/+uMQaZFCSw4hjNzE1"
+     target="_blank"
+     rel="noopener noreferrer">
+
+    <svg class="telegram-icon" viewBox="0 0 24 24"
+         aria-hidden="true">
+      <path d="M21.8 3.2 18.5 20c-.25 1.18-.92 1.47-1.87.91l-5.17-3.81-2.5 2.4c-.28.28-.52.52-1.06.52l.37-5.26 9.57-8.65c.42-.37-.09-.58-.65-.21L5.36 13.3.25 11.7c-1.11-.35-1.13-1.11.23-1.64L20.46 2.3c.92-.34 1.73.22 1.34.9z"/>
+    </svg>
+
+    JOIN ON TELEGRAM
+    <span aria-hidden="true">↗</span>
+  </a>
+
+  <div class="private">
+    <span class="line"></span>
+    PRIVATE CHANNEL
+    <span class="line"></span>
+  </div>
+
+  <p class="disclaimer">
+    Disclaimer: This channel shares cricket analysis and
+    general information. No results are guaranteed.
+    Please verify information independently and act responsibly.
+  </p>
+
+</main>
+</body>
+</html>
